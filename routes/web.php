@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::post("/edit/{id}", [ContactController::class, "update"])->name("update.co
 
 Route::get("/delete/{contact}", [ContactController::class, "softDelete"])->name("delete.contact");
 Route::delete("/destroy/{contact}", [ContactController::class, "destroy"])->name("destroy.contact");
+
+Route::get("/login", [ContactController::class, "login"])->name("login.contact");
+Route::post("/check_login", [ContactController::class, "check_login"])->name("check_login.contact");
+

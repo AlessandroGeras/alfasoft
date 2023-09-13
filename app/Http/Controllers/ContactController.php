@@ -6,14 +6,15 @@ use App\Http\Requests\ContactStoreRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        
+        $contacts = Contact::all();
 
-        return view("index");
+        return view("index", compact("contacts"));
     }
 
     public function show($id)
@@ -63,5 +64,14 @@ class ContactController extends Controller
         $contact->forceDelete();
 
         return redirect("/");
+    }
+    
+     public function login()
+    {
+        return view("login");
+    }
+    
+    public function check_login(Request $request)
+    {
     }
 }
